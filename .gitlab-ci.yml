@@ -17,6 +17,8 @@ cache:
 
 test:
   stage: test
+  only:
+    - dev
   script:
     - echo "Running tests"
     # - npm run test
