@@ -83,6 +83,15 @@ class Inventory extends Component {
   render () {
     const logout = <button onClick={this.logoutHandler}>Log Out!</button>;
 
+    // console.log('object', );
+    // base.collection("categories").valueChanges().map(document => {
+    //   return document(a => {
+    //     const data = a.payload.doc.data();//Here is your content
+    //     const id = a.payload.doc.id;//Here is the key of your document
+    //     return { id, ...data };
+    //   });
+    // })
+
     if (!firebase.auth().currentUser) {
       return <Login authenticate={this.authenticate} />
     }

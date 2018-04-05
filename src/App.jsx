@@ -133,6 +133,14 @@ class App extends Component {
     this.setState({ order });
   }
 
+  clearOrder = () => {
+    // const order = {...this.props.order};
+    // console.log('object', this);
+    localforage.removeItem(this.props.match.params.storeId, () => {
+      this.setState({ order: {} });
+    })
+  }
+
   render () {
     return (
       <div className="App catch-of-the-day">
@@ -147,6 +155,7 @@ class App extends Component {
           fishes={this.state.fishes}
           order={this.state.order}
           removeFromOrder={this.removeFromOrder}
+          clearOrder={this.clearOrder}
         />
         <Inventory
           fishes={this.state.fishes}

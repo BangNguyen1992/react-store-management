@@ -49,9 +49,12 @@ class Order extends Component {
               </TransitionGroup>
               lbs {fish.name}
 
+            </span>
+            <span className="price">
+              {formatPrice(count * fish.price)}
+
               <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
             </span>
-            <span className="price">{formatPrice(count * fish.price)}</span>
 
           </li>
         </CSSTransition>
@@ -111,7 +114,9 @@ class Order extends Component {
         <div className="total" style={{ paddingTop: 0.5 + 'em' }}>
           <strong>Total: </strong>
           <span style={{ float: 'right' }}>{formatPrice(totalPrice)}</span>
+          &nbsp;
         </div>
+        <button onClick={this.props.clearOrder} className="clear-order">Clear Order</button>
       </div>
     );
   }
