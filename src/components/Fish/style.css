@@ -1,0 +1,46 @@
+.menu-fish {
+  border-bottom: 2px solid #000;
+  border-top: 1px solid #000;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  margin-bottom: 5px;
+  clear: both;
+  overflow: hidden;
+}
+.menu-fish p {
+  margin: 0;
+  margin-bottom: 1em;
+  font-size: 1.8rem;
+}
+
+.menu-fish button {
+  float: right;
+}
+
+.menu-fish button:disabled {
+  float: none;
+}
+
+.menu-fish .fish-name {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.menu-fish .price {
+  font-size: 1.4rem;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.menu-fish img {
+  float: left;
+  width: 150px;
+  margin-right: 1rem;
+}
