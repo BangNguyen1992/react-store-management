@@ -9,6 +9,8 @@
   "dependencies": {
     "autoprefixer-stylus": "^0.14.0",
     "firebase": "^4.12.1",
+    "jest": "^22.4.3",
+    "jest-cli": "^22.4.3",
     "localforage": "^1.7.1",
     "prop-types": "^15.6.1",
     "re-base": "^3.2.2",
@@ -22,6 +24,7 @@
     "start": "react-scripts start",
     "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
     "build": "react-scripts build",
+    "deploy": "firebase deploy",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
