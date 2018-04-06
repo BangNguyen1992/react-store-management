@@ -8,7 +8,7 @@ import { formatPrice } from '../../helpers';
 import './style.css';
 
 class Order extends Component {
-  // state = { loading: true }
+  state = { order: this.props.order }
 
   static propTypes = {
     fishes: PropTypes.shape({
@@ -20,7 +20,11 @@ class Order extends Component {
         price: PropTypes.number
       })
     }).isRequired,
-    order: PropTypes.object.isRequired
+    order: PropTypes.object.isRequired,
+    removeFromOrder: PropTypes.func.isRequired,
+    userId: PropTypes.string,
+    clearOrder: PropTypes.func.isRequired,
+    // storeId: PropTypes.string.isRequired
   }
 
 
@@ -52,7 +56,7 @@ class Order extends Component {
             </span>
             <span className="price">
               {formatPrice(count * fish.price)}
-
+              &nbsp;
               <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
             </span>
 
@@ -76,12 +80,13 @@ class Order extends Component {
   //   }
   // }
 
-  componentDidUpdate (prevProps, prevState) {
-    // console.log('object', prevProps, prevState);
-    // Only add order to localforage when add new order
-    localforage.setItem(this.props.storeId, this.props.order)
-  }
 
+  componentDidUpdate (prevProps, prevState) {
+    if (this.props.userId) {
+      localforage.setItem(this.props.userId, this.props.order)
+      // localforage.setItem(this.props.storeId, this.props.order)
+    }
+  }
 
   render () {
     const orderIds = Object.keys(this.props.order);
@@ -94,16 +99,6 @@ class Order extends Component {
       }
       return prevTotal;
     }, 0)
-
-    // const order = this.props.order;
-    // const totalPrice = order.reduce((prevTotal, item) => {
-    //   const count = item.count;
-    //   const isAvailable = item && item.status === "available";
-    //   if (isAvailable) {
-    //     return prevTotal + count * item.price
-    //   }
-    //   return prevTotal;
-    // }, 0)
 
     return (
       <div className="order-wrap">

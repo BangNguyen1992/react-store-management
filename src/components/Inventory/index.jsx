@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 
 // import { formatPrice } from 'helpers';
-import base, { firebaseApp } from 'firebase.js';
+// import base from 'firebase.js';
 
 import AddFishForm from '../AddFishForm';
 import EditFishForm from '../EditFishFrom';
@@ -27,73 +27,48 @@ class Inventory extends Component {
     loadSampleFishes: PropTypes.func.isRequired,
     updateFish: PropTypes.func.isRequired,
     deleteFish: PropTypes.func.isRequired,
-    storeId: PropTypes.string.isRequired
+    storeId: PropTypes.string.isRequired,
+    userId: PropTypes.string,
+    owner: PropTypes.string,
+    authenticate: PropTypes.func.isRequired,
+    logoutHandler: PropTypes.func.isRequired
   }
 
   state = {
     title: 'Inventory',
-    uid: null,
-    owner: null
+    uid: this.props.userId,
+    owner: this.props.owner
   }
 
 
-  authHandler = async (authData) => {
-    // Look up the current store in the firebase database
-    const store = await base.fetch(this.props.storeId, { contex: this })
-    // Claim it if there is no owner
-    // console.log('object', store);
-    if (!store.hasOwnProperty('owner')) {
-      await base.post(`${this.props.storeId}/owner`, {
-        data: authData.user.uid
-      })
-    }
-    // Set the state of the inventory component to reflect  the current owner
-    this.setState({
-      uid: authData.user.uid,
-      owner: store.owner || authData.user.uid
-    })
-  }
+  // async componentDidMount () {
+  //   const store = await base.fetch(this.props.storeId, { contex: this });
 
-  authenticate = (provider) => {
-    const authProvider = new firebase.auth[`${provider}AuthProvider`]();
+  //   if (store) {
+  //     await firebase.auth().onAuthStateChanged((user) => {
+  //       if (user) {
+  //         this.setState({
+  //           uid: user.uid,
+  //           owner: store.owner
+  //         })
+  //       }
+  //     }); 
+  //   }
+  // }
 
-    firebaseApp
-      .auth()
-      .signInWithPopup(authProvider)
-      .then(this.authHandler);
-  };
-
-  logoutHandler = async () => {
-    await firebase.auth().signOut();
-    this.setState({
-      uid: null,
-      owner: null
-    })
-  }
-
-  async componentDidMount () {
-    const store = await base.fetch(this.props.storeId, { contex: this })
-
-    await this.setState({
-      uid: firebase.auth().currentUser.uid,
-      owner: store.owner
-    })
+  static getDerivedStateFromProps (nextProps, prevState) {
+    // console.log('object', nextProps, prevState);
+    prevState.uid = nextProps.userId || null;
+    prevState.owner = nextProps.owner || null;
+    return nextProps;
   }
 
   render () {
-    const logout = <button onClick={this.logoutHandler}>Log Out!</button>;
+    // console.log('object', this.props.owner);
+    const logout = <button onClick={this.props.logoutHandler}>Log Out!</button>;
 
-    // console.log('object', );
-    // base.collection("categories").valueChanges().map(document => {
-    //   return document(a => {
-    //     const data = a.payload.doc.data();//Here is your content
-    //     const id = a.payload.doc.id;//Here is the key of your document
-    //     return { id, ...data };
-    //   });
-    // })
-
-    if (!firebase.auth().currentUser) {
-      return <Login authenticate={this.authenticate} />
+    if (!this.state.uid) {
+      return <Login authenticate={this.props.authenticate} />
     }
 
     if (this.state.uid !== this.state.owner) {
@@ -109,7 +84,6 @@ class Inventory extends Component {
 
     return (
       <div className="inventory">
-        {/* {this.props.title} */}
         <h2>{this.state.title}</h2>
         {Object.keys(this.props.fishes).map(key =>
           <EditFishForm
