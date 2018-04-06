@@ -37,7 +37,7 @@ class Inventory extends Component {
   state = {
     title: 'Inventory',
     uid: this.props.userId,
-    owner: this.props.owner
+    // owner: this.props.owner
   }
 
 
@@ -57,9 +57,8 @@ class Inventory extends Component {
   // }
 
   static getDerivedStateFromProps (nextProps, prevState) {
-    // console.log('object', nextProps, prevState);
-    prevState.uid = nextProps.userId || null;
-    prevState.owner = nextProps.owner || null;
+    prevState.uid = nextProps.userId;
+    // prevState.owner = nextProps.owner;
     return nextProps;
   }
 
@@ -67,11 +66,11 @@ class Inventory extends Component {
     // console.log('object', this.props.owner);
     const logout = <button onClick={this.props.logoutHandler}>Log Out!</button>;
 
-    if (!this.state.uid) {
+    if (!this.state.uid || !this.props.owner) {
       return <Login authenticate={this.props.authenticate} />
     }
 
-    if (this.state.uid !== this.state.owner) {
+    if (this.state.uid !== this.props.owner) {
       return (
         <div className="login">
           <h2>Sorry, you are not the owner</h2>

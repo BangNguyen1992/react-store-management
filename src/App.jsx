@@ -62,69 +62,12 @@ class App extends Component {
     base.removeBinding(this.ref);
   }
 
-  //
   setStoreOwner = async () => {
     const store = await base.fetch(this.props.match.params.storeId, { contex: this });
     this.setState({ owner: store.owner })
   }
 
-  loadSampleFishes = () => {
-    this.setState({ fishes: sampleFishes })
-  }
-
-  addFish = fish => {
-    // Take a copy of the existing state
-    const fishes = { ...this.state.fishes };
-    // Add new fish to that fishes variable
-    fishes[`fish${Date.now()}`] = fish;
-
-    this.setState({ fishes });
-  }
-
-  updateFish = (key, updatedFish) => {
-    const fishes = { ...this.state.fishes };
-    fishes[key] = updatedFish;
-
-    this.setState({ fishes });
-  }
-
-  deleteFish = (key) => {
-    // remove fish from inventory
-    const fishes = { ...this.state.fishes };
-    // need set item to null so that firebase will also remove it
-    fishes[key] = null;
-
-    // remove fish from order
-    const order = { ...this.state.order };
-    delete order[key];
-
-    this.setState({ fishes, order });
-  }
-
-  addToOrder = (key) => {
-    const order = { ...this.state.order };
-    order[key] = order[key] + 1 || 1;
-
-    this.setState({ order });
-  }
-
-  removeFromOrder = (key) => {
-    const order = { ...this.state.order };
-    delete order[key];
-
-    this.setState({ order });
-  }
-
-  clearOrder = () => {
-    // localforage.removeItem(this.props.match.params.storeId, () => {
-    //   this.setState({ order: {} });
-    // })
-
-    localforage.removeItem(this.state.user.uid, () => {
-      this.setState({ order: {} });
-    })
-  }
-
+  // Setup login/logout
   authHandler = async (authData) => {
     // Look up the current store in the firebase database
     const store = await base.fetch(this.props.match.params.storeId, { contex: this })
@@ -161,6 +104,68 @@ class App extends Component {
       order: {}
     })
   }
+
+
+  // Methods for Fishes
+  loadSampleFishes = () => {
+    this.setState({ fishes: sampleFishes })
+  }
+
+  addFish = fish => {
+    // Take a copy of the existing state
+    const fishes = { ...this.state.fishes };
+    // Add new fish to that fishes variable
+    fishes[`fish${Date.now()}`] = fish;
+
+    this.setState({ fishes });
+  }
+
+  updateFish = (key, updatedFish) => {
+    const fishes = { ...this.state.fishes };
+    fishes[key] = updatedFish;
+
+    this.setState({ fishes });
+  }
+
+  deleteFish = (key) => {
+    // remove fish from inventory
+    const fishes = { ...this.state.fishes };
+    // need set item to null so that firebase will also remove it
+    fishes[key] = null;
+
+    // remove fish from order
+    const order = { ...this.state.order };
+    delete order[key];
+
+    this.setState({ fishes, order });
+  }
+
+
+  // Methods for Order
+  addToOrder = (key) => {
+    const order = { ...this.state.order };
+    order[key] = order[key] + 1 || 1;
+
+    this.setState({ order });
+  }
+
+  removeFromOrder = (key) => {
+    const order = { ...this.state.order };
+    delete order[key];
+
+    this.setState({ order });
+  }
+
+  clearOrder = () => {
+    // localforage.removeItem(this.props.match.params.storeId, () => {
+    //   this.setState({ order: {} });
+    // })
+
+    localforage.removeItem(this.state.user.uid, () => {
+      this.setState({ order: {} });
+    })
+  }
+
 
   render () {
     return (
