@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import localforage from 'localforage';
 import firebase from 'firebase';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 // import logo from 'images/logo.svg';
 import './App.css';
-import './starterFiles.css';
-import sampleFishes from './sample-fishes';
-import base, { firebaseApp } from './firebase.js';
 
-import Header from './components/Header';
-import Menu from './components/Menu';
-import Inventory from './components/Inventory';
-import Order from './components/Order';
+import sampleFishes from './sample-fishes';
+import base, { firebaseApp } from 'firebase.js';
+
+import Header from 'components/Header';
+import Menu from 'components/Menu';
+import Inventory from 'components/Inventory';
+import Order from 'components/Order';
 
 
 let currentUserId;
@@ -169,35 +171,48 @@ class App extends Component {
 
   render () {
     return (
-      <div className="App catch-of-the-day">
-        <div className="menu">
-          <Header tagline="Fresh Seafood Market" />
-          <Menu fishes={this.state.fishes} addToOrder={this.addToOrder} />
+      <div className="store-management">
+        <div className="catch-of-the-day">
+          <div className="menu">
+            <Header tagline="Fresh Seafood Market" />
+            <Tabs>
+              <TabList>
+                <Tab>Title 1</Tab>
+                <Tab>Title 2</Tab>
+              </TabList>
+
+              <TabPanel>
+                <Menu fishes={this.state.fishes} addToOrder={this.addToOrder} />
+              </TabPanel>
+              <TabPanel>
+                <h2>Any content 2</h2>
+              </TabPanel>
+            </Tabs>
+          </div>
+          {/* Should not pass all the state to component */}
+          {/* <Order {...this.state} /> */}
+          <Order
+            userId={this.state.userId}
+            // storeId={this.props.match.params.storeId}
+            fishes={this.state.fishes}
+            order={this.state.order}
+            removeFromOrder={this.removeFromOrder}
+            clearOrder={this.clearOrder}
+
+          />
+          <Inventory
+            userId={this.state.userId}
+            storeId={this.props.match.params.storeId}
+            owner={this.state.owner}
+            fishes={this.state.fishes}
+            addFish={this.addFish}
+            updateFish={this.updateFish}
+            deleteFish={this.deleteFish}
+            loadSampleFishes={this.loadSampleFishes}
+            authenticate={this.authenticate}
+            logoutHandler={this.logoutHandler}
+          />
         </div>
-        {/* Should not pass all the state to component */}
-        {/* <Order {...this.state} /> */}
-        <Order
-          userId={this.state.userId}
-          // storeId={this.props.match.params.storeId}
-          fishes={this.state.fishes}
-          order={this.state.order}
-          removeFromOrder={this.removeFromOrder}
-          clearOrder={this.clearOrder}
-
-        />
-        <Inventory
-          userId={this.state.userId}
-          storeId={this.props.match.params.storeId}
-          owner={this.state.owner}
-          fishes={this.state.fishes}
-          addFish={this.addFish}
-          updateFish={this.updateFish}
-          deleteFish={this.deleteFish}
-          loadSampleFishes={this.loadSampleFishes}
-          authenticate={this.authenticate}
-          logoutHandler={this.logoutHandler}
-        />
-
       </div>
     );
   }

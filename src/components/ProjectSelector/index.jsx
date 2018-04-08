@@ -10,9 +10,9 @@ class ProjectSelector extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="store-management">
         <StorePicker route={this.props.history} />
-      </React.Fragment>
+      </div>
     );
   }
 }

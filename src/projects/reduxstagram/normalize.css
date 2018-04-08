@@ -1,0 +1,202 @@
+.reduxstagram article,
+.reduxstagram aside,
+.reduxstagram details,
+.reduxstagram figcaption,
+.reduxstagram figure,
+.reduxstagram footer,
+.reduxstagram header,
+.reduxstagram hgroup,
+.reduxstagram nav,
+.reduxstagram section,
+.reduxstagram summary {
+	display: block;
+}
+
+.reduxstagram audio,
+.reduxstagram canvas,
+.reduxstagram video {
+	display: inline-block;
+}
+
+.reduxstagram audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+.reduxstagram [hidden] {
+	display: none;
+}
+
+.reduxstagram html {
+	font-family: sans-serif;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+.reduxstagram a:focus {
+	outline: thin dotted;
+}
+
+.reduxstagram a:active,
+.reduxstagram a:hover {
+	outline: 0;
+}
+
+.reduxstagram h1 {
+	font-size: 2em;
+}
+
+.reduxstagram abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+.reduxstagram b,
+.reduxstagram strong {
+	font-weight: 700;
+}
+
+.reduxstagram dfn {
+	font-style: italic;
+}
+
+.reduxstagram mark {
+	background: #ff0;
+	color: #000;
+}
+
+.reduxstagram code,
+.reduxstagram kbd,
+.reduxstagram pre,
+.reduxstagram samp {
+	font-family: monospace, serif;
+	font-size: 1em;
+}
+
+.reduxstagram pre {
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+.reduxstagram q {
+	quotes: 2 1C 2 1D 2 18 2 19;
+}
+
+.reduxstagram small {
+	font-size: 80%;
+}
+
+.reduxstagram sub,
+.reduxstagram sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+.reduxstagram sup {
+	top: -0.5em;
+}
+
+.reduxstagram sub {
+	bottom: -0.25em;
+}
+
+.reduxstagram img {
+	border: 0;
+}
+
+.reduxstagram svg:not(:root) {
+	overflow: hidden;
+}
+
+.reduxstagram fieldset {
+	border: 1px solid #c0c0c0;
+	margin: 0 2px;
+	padding: 0.35em 0.625em 0.75em;
+}
+
+.reduxstagram button,
+.reduxstagram input,
+.reduxstagram select,
+.reduxstagram textarea {
+	font-family: inherit;
+	font-size: 100%;
+	margin: 0;
+}
+
+.reduxstagram button,
+.reduxstagram input {
+	line-height: normal;
+}
+
+.reduxstagram button,
+.reduxstagram html input[type=button],
+.reduxstagram input[type=reset],
+.reduxstagram input[type=submit] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+.reduxstagram button[disabled],
+.reduxstagram input[disabled] {
+	cursor: default;
+}
+
+.reduxstagram input[type=checkbox],
+.reduxstagram input[type=radio] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+.reduxstagram input[type=search] {
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.reduxstagram input[type=search]::-webkit-search-cancel-button,
+.reduxstagram input[type=search]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+.reduxstagram textarea {
+	overflow: auto;
+	vertical-align: top;
+}
+
+.reduxstagram table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.reduxstagram body,
+.reduxstagram figure {
+	margin: 0;
+}
+
+.reduxstagram legend,
+.reduxstagram button::-moz-focus-inner,
+.reduxstagram input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+.reduxstagram .clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.reduxstagram * {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.reduxstagram img {
+	max-width: 100%;
+}
