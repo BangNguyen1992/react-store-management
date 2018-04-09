@@ -1,37 +1,22 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 import Fish from 'components/Fish';
-
+import Context from '../../Context.js';
 
 class Menu extends Component {
   render () {
     return (
-      // <ul className="fishes">
-      //   {this.props.fishes.map(item => (
-      //     <Fish key={item.id} details={item} addToOrder={this.props.addToOrder} />
-      //   ))}
-      // </ul>
-      <ul className="fishes">
-        {Object.keys(this.props.fishes).map(key => (
-          <Fish key={key} fishId={key} details={this.props.fishes[key]} addToOrder={this.props.addToOrder} />
-        ))}
-      </ul>
+      <Context.Consumer>
+        {({ state, actions }) => (
+          <ul className="fishes">
+            {Object.keys(state.fishes).map(key => (
+              <Fish key={key} fishId={key} fish={state.fishes[key]} />
+            ))}
+          </ul>
+        )}
+      </Context.Consumer>
     );
   }
-}
-
-Menu.propTypes = {
-  fishes: PropTypes.shape({
-    fish: PropTypes.shape({
-      image: PropTypes.string,
-      name: PropTypes.string,
-      desc: PropTypes.string,
-      status: PropTypes.string,
-      price: PropTypes.number
-    })
-  }).isRequired,
-  addToOrder: PropTypes.func.isRequired
 }
 
 export default Menu;
