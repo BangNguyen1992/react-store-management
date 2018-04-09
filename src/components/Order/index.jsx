@@ -1,42 +1,52 @@
 import React, { Component } from 'react';
 import localforage from 'localforage';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-import { formatPrice } from '../../helpers';
+import { formatPrice } from '../../utility-functions.js';
+import Context from '../../Context.js';
+// import OrderList from '../OrderList';
 
 import './style.css';
+
 
 class Order extends Component {
   state = { order: this.props.order }
 
-  static propTypes = {
-    fishes: PropTypes.shape({
-      fish: PropTypes.shape({
-        image: PropTypes.string,
-        name: PropTypes.string,
-        desc: PropTypes.string,
-        status: PropTypes.string,
-        price: PropTypes.number
-      })
-    }).isRequired,
-    order: PropTypes.object.isRequired,
-    removeFromOrder: PropTypes.func.isRequired,
-    userId: PropTypes.string,
-    clearOrder: PropTypes.func.isRequired,
-    // storeId: PropTypes.string.isRequired
-  }
+  // static propTypes = {
+  //   fishes: PropTypes.shape({
+  //     fish: PropTypes.shape({
+  //       image: PropTypes.string,
+  //       name: PropTypes.string,
+  //       desc: PropTypes.string,
+  //       status: PropTypes.string,
+  //       price: PropTypes.number
+  //     })
+  //   }).isRequired,
+  //   order: PropTypes.object.isRequired,
+  //   // removeFromOrder: PropTypes.func.isRequired,
+  //   // userId: PropTypes.string,
+  //   // clearOrder: PropTypes.func.isRequired,
+  //   // storeId: PropTypes.string.isRequired
+  // }
 
 
-  orderList = (key) => {
+
+
+  // If add order to localforage here, sometimes it will get the initialize order state that hadnt been populated yet
+  // which leads to reset the localforage
+  // componentWillUpdate() {
+  //   if (this.props.order) {
+  //     localforage.setItem(this.props.storeId, this.props.order)
+  //   }
+  // }
+
+  orderList = (key, fish, count, actions) => {
     const transitionOptions = {
       classNames: "order",
       key: key,
       timeout: { enter: 250, exit: 250 }
     }
-
-    const fish = this.props.fishes[key];
-    const count = this.props.order[key];
 
     if (!fish) return null;
 
@@ -57,7 +67,7 @@ class Order extends Component {
             <span className="price">
               {formatPrice(count * fish.price)}
               &nbsp;
-              <button onClick={() => this.props.removeFromOrder(key)}>&times;</button>
+            <button onClick={() => actions.removeFromOrder(key)}>&times;</button>
             </span>
 
           </li>
@@ -72,14 +82,6 @@ class Order extends Component {
     }
   }
 
-  // If add order to localforage here, sometimes it will get the initialize order state that hadnt been populated yet
-  // which leads to reset the localforage
-  // componentWillUpdate() {
-  //   if (this.props.order) {
-  //     localforage.setItem(this.props.storeId, this.props.order)
-  //   }
-  // }
-
 
   componentDidUpdate (prevProps, prevState) {
     if (this.props.userId) {
@@ -89,6 +91,7 @@ class Order extends Component {
   }
 
   render () {
+    // if (this.props.order) {
     const orderIds = Object.keys(this.props.order);
     const totalPrice = orderIds.reduce((prevTotal, keyId) => {
       const fish = this.props.fishes[keyId];
@@ -101,18 +104,29 @@ class Order extends Component {
     }, 0)
 
     return (
-      <div className="order-wrap">
-        <h2>Your Order</h2>
-        <TransitionGroup component="ul" className="order">
-          {orderIds.map(key => this.orderList(key))}
-        </TransitionGroup>
-        <div className="total" style={{ paddingTop: 0.5 + 'em' }}>
-          <strong>Total: </strong>
-          <span style={{ float: 'right' }}>{formatPrice(totalPrice)}</span>
-          &nbsp;
-        </div>
-        <button onClick={this.props.clearOrder} className="clear-order">Clear Order</button>
-      </div>
+      <Context.Consumer>
+        {({ state, actions }) => (
+          <div className="order-wrap">
+            <h2>Your Order</h2>
+            <TransitionGroup component="ul" className="order">
+              {/* {orderIds.map(key => <OrderList key={key} id={key} />)} */}
+              {orderIds.map(key =>
+                this.orderList(key,
+                               state.fishes[key],
+                               state.order[key],
+                               actions
+                              )
+              )}
+            </TransitionGroup>
+            <div className="total" style={{ paddingTop: 0.5 + 'em' }}>
+              <strong>Total: </strong>
+              <span style={{ float: 'right' }}>{formatPrice(totalPrice)}</span>
+              &nbsp;
+          </div>
+            <button onClick={actions.clearAllOrder} className="clear-order">Clear Order</button>
+          </div>
+        )}
+      </Context.Consumer>
     );
   }
 }

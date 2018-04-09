@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 // import firebase from 'firebase';
 
 // import base from 'firebase.js';
-import { getFunName } from '../../helpers';
+import { getFunName } from '../../utility-functions.js';
 import './style.css';
 
 class StorePicker extends Component {
@@ -30,7 +30,6 @@ class StorePicker extends Component {
     this.props.route.push(`/store/${myStore}`);
   }
   componentDidMount () {
-    this.setState({ someKey: 'otherValue' });
     // const store = await base.fetch();
 
     // console.log('object', store);

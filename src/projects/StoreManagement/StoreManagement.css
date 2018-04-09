@@ -1,0 +1,50 @@
+.store-management {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 90vh;
+  max-width: 1500px;
+  margin: 0 auto;
+  margin-top: 5vh;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.store-management > * {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 4 auto;
+          flex: 1 4 auto;
+  padding: 2rem;
+  border: 1rem double #1a1a1a;
+  position: relative;
+  background: #fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+          box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+  overflow: scroll;
+}
+.store-management > *:first-child {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  -webkit-transform: translateX(50%) rotateY(6deg) translateX(-50%);
+          transform: translateX(50%) rotateY(6deg) translateX(-50%);
+}
+.store-management > *:nth-child(2) {
+  -webkit-transform: translateX(-50%) rotateY(-14deg) translateX(50%);
+          transform: translateX(-50%) rotateY(-14deg) translateX(50%);
+  border-left: 0;
+  border-right: 0;
+  min-width: 300px;
+}
+.store-management > *:last-child {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  -webkit-transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
+          transform: translateX(-50%) rotateY(10deg) translateX(50%) scale(1.08) translateX(24px);
+}
