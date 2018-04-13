@@ -30,15 +30,16 @@ class Provider extends Component {
       then: () => {
         this.setStoreOwner();
         // this.setUserId();
+        console.log('object', firebase.auth());
         if (firebase.auth().currentUser) {
           this.setState({ userId: firebase.auth().currentUser.uid });
 
           localforage.getItem(firebase.auth().currentUser.uid).then(value => {
             if (value) this.setState({ order: value })
-          });
-  
-          this.setState({ isLoading: false })
+          });  
         }
+        this.setState({ isLoading: false })
+
       }, // this will make componentWillUpdate run again
       onFailure: (error) => console.log('Error: ', error)
     });
