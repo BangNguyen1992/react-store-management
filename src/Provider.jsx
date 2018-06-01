@@ -30,7 +30,7 @@ class Provider extends Component {
       then: () => {
         this.setStoreOwner();
         // this.setUserId();
-        console.log('object', firebase.auth());
+        // console.log('object', firebase.auth());
         if (firebase.auth().currentUser) {
           this.setState({ userId: firebase.auth().currentUser.uid });
 
