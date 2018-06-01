@@ -61,7 +61,7 @@
     "start": "node scripts/start.js",
     "watch": "concurrently --names \"webpack, stylus\" --prefix name \"npm run start\" \"npm run styles:watch\"",
     "build": "node scripts/build.js",
-    "deploy": "firebase deploy --non-interactive --token $FIREBASE_DEPLOY_KEY",
+    "deploy": "firebase deploy --non-interactive --token $FIREBASE_TOKEN",
     "test": "node scripts/test.js --env=jsdom",
     "styles": "stylus -u autoprefixer-stylus ./src/css/style.styl -o ./src/css/style.css",
     "styles:watch": "stylus -u autoprefixer-stylus -w ./src/css/style.styl -o ./src/css/style.css"

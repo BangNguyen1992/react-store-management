@@ -14,6 +14,10 @@ before_script:
   # paths:
     # - node_modules/
     # - functions/node_modules/
+cache: 
+  paths:
+    - node_modules/     
+  key: "$CI_BUILD_REPO"
 
 test:
   stage: test
@@ -37,6 +41,8 @@ deploy:
   script:
     - echo "Building the app"
     - npm run build
-    - npm run deploy
-    - firebase use default --token $FIREBASE_DEPLOY_KEY
-    - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --only hosting --token $FIREBASE_DEPLOY_KEY
+    # - npm run deploy
+    - firebase use default --token $FIREBASE_TOKEN
+    - firebase deploy --only hosting -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token $FIREBASE_TOKEN
+    # - firebase use default --token $FIREBASE_DEPLOY_KEY
+    # - firebase deploy -m "Pipeline $CI_PIPELINE_ID, build $CI_BUILD_ID" --non-interactive --only hosting --token $FIREBASE_DEPLOY_KEY
