@@ -20,23 +20,23 @@ You can check the live-demo [here](https://bang-nguyen.firebaseapp.com/)
 
 #### You need to enter a store name, if the store name existed, it will enter the store, else it will create a new store
 
-![Enter Store](https://gitlab.com/nguyenbahaibang/store-management/src/images/EnterStore.png)
+![Enter Store](https://gitlab.com/nguyenbahaibang/store-management/blob/master/src/images/EnterStore.png)
 
 
 ### Main view of the app:
 
-![Main View](https://gitlab.com/nguyenbahaibang/store-management/src/images/MainView.png)
+![Main View](https://gitlab.com/nguyenbahaibang/store-management/blob/master/src/images/MainView.png)
 
 ### You need to login to add more dishes to the menu
 
 If you are the owner of the store, you can modify the menu as you like, or `Load Sample Fishes` to the menu
 
-![Inventory](https://gitlab.com/nguyenbahaibang/store-management/src/images/Inventory.png)
+![Inventory](https://gitlab.com/nguyenbahaibang/store-management/blob/master/src/images/Inventory.png)
 
 If you are not the owner of the store, you can only add dishes to your order
 
-![Not the owner](https://gitlab.com/nguyenbahaibang/store-management/src/images/NotOwner.png)
+![Not the owner](https://gitlab.com/nguyenbahaibang/store-management/blob/master/src/images/NotOwner.png)
 
 #### Your order will be save to the browser, so next time visit the store, just log in and you can see it again
 
-![Order](https://gitlab.com/nguyenbahaibang/store-management/src/images/Order.png)
+![Order](https://gitlab.com/nguyenbahaibang/store-management/blob/master/src/images/Order.png)
