@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "autoprefixer": "^8.2.0",
-
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
     "babel-jest": "20.0.3",
@@ -35,6 +34,7 @@
     "jest": "^22.4.3",
     "jest-cli": "^22.4.3",
     "localforage": "^1.7.1",
+    "node-gyp": "^3.6.2",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "^3.3.0",
     "postcss-loader": "^2.1.3",
