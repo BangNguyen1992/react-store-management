@@ -1,9 +1,11 @@
-export function formatPrice(cents) {
-  return (cents / 100).toLocaleString("en-US", {
-    style: "currency",
-    currency: "USD"
-  });
+export const formatPrice = (number) => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+  }).format(number/100);
 }
+
 
 export function rando(arr) {
   return arr[Math.floor(Math.random() * arr.length)];
