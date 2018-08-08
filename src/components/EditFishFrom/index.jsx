@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Context from '../../Context.js';
-import { formatPrice } from '../../utility-functions.js';
+// import { formatPrice, formatter } from '../../utility-functions.js';
 
 class EditFishForm extends Component {
   // nameRef = React.createRef();
@@ -10,26 +10,27 @@ class EditFishForm extends Component {
   // descRef = React.createRef();
   // imageRef = React.createRef();
 
-  render () {
+  render() {
     return (
       <Context.Consumer>
         {({ state, actions }) => (
           <div className="fish-edit">
+            {/* <span class="unit">Name: </span> */}
             <input
               name="name"
               onChange={(event) => actions.updateFish(event, this.props.fishId)}
-              value={`Name: ${state.fishes[this.props.fishId].name}`}
+              value={state.fishes[this.props.fishId].name}
               // ref={this.nameRef}
               type="text"
-            // placeholder="Name"
+              placeholder="Name"
             />
 
             <input name="price"
               onChange={(event) => actions.updateFish(event, this.props.fishId)}
-              value={`Price: ${formatPrice(state.fishes[this.props.fishId].price)}`}
+              value={state.fishes[this.props.fishId].price}
               // ref={this.priceRef}
               type="text"
-            // placeholder="Price"
+              placeholder="Price"
             />
 
             <select
@@ -47,7 +48,7 @@ class EditFishForm extends Component {
               value={state.fishes[this.props.fishId].desc}
               // ref={this.descRef}
               type="text"
-            // placeholder="Desc"
+              placeholder="Desc"
             />
 
             <input

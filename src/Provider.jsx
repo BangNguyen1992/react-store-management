@@ -134,7 +134,10 @@ class Provider extends Component {
       ...this.state.fishes.fishId,
       [event.target.name]: event.target.value
     };
-
+    // if (event.target.name === 'price') {
+    //   console.log('object event.target.value', updatedFish, formatter(event.target.value) )
+    //   updatedFish.price = formatter(event.target.value)
+    // }
     // Update that fish
     fishes[fishId] = updatedFish;
 
