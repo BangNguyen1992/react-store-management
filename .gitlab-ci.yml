@@ -28,11 +28,11 @@ test:
     - echo "Running tests"
     - npm run test
 
-build:
-  stage: build
-  script:
-    - echo "Building the app"
-    - npm run build
+# build:
+#   stage: build
+#   script:
+#     - echo "Building the app"
+#     - npm run build
 
 # deploy:
 #   stage: deploy
