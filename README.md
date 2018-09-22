@@ -1,4 +1,4 @@
-[![pipeline status](https://gitlab.com/nguyenbahaibang/store-management/badges/master/pipeline.svg)](https://gitlab.com/nguyenbahaibang/store-management/commits/master)
+<!-- [![pipeline status](https://gitlab.com/nguyenbahaibang/store-management/badges/master/pipeline.svg)](https://gitlab.com/nguyenbahaibang/store-management/commits/master) -->
 
 # React Store Management
 
