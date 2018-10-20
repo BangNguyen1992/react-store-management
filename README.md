@@ -2,17 +2,17 @@
 
 # React Store Management
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+Implementing React + Firestore, applying new React Context
 
-This project was origin based on [React for Beginners](https://reactforbeginners.com/) of WesBos
+* Real time integrate with Firebase database
 
-I changed the code and apply new React Context to the repos
+* Sign in with Git, facebook, and Google account
 
-1/ Real time integrate with Firebase database
-2/ Sign in with Git, facebook, and Google account
-3/ Inventory database saved in Firebase
-4/ User & order saved in IndexedDB
-5/ Auto test build and deploy to live-demo
+* Inventory database saved in Firebase
+
+* User & order saved in IndexedDB
+
+* Auto test build and deploy to live-demo
 
 ## Demo
 
@@ -41,3 +41,10 @@ If you are not the owner of the store, you can only add dishes to your order
 #### Your order will be save to the browser, so next time visit the store, just log in and you can see it again
 
 ![Order](./src/images/Order.png)
+
+
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
+This project was origin based on [React for Beginners](https://reactforbeginners.com/) of WesBos
